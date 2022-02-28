@@ -10,14 +10,15 @@
 
 <body>
     <div class="container">
-        <form action="/result" method="post">
+        <form action="/create/review" method="post">
             <div>
                 <label>Your Name:</label>
-                <input type="text" name="name">
+                <input type="text" name="name" id="name">
             </div>
             <div>
                 <label>Dojo Location:</label>
-                <select name="location" id="location">
+                <select name="location" id="dojo">
+                    <option value ="">Select A Location</option>
                     <option value="Bellevue">Bellevue</option>
                     <option value="Boise">Boise</option>
                     <option value="Chicago">Chicago</option>
@@ -28,6 +29,7 @@
             <div>
                 <label>Favorite Language:</label>
                 <select name="language" id="language">
+                    <option value ="">Select A Language</option>
                     <option value="Javascript">Javascript</option>
                     <option value="Python">Python</option>
                     <option value="C#">C#</option>
@@ -36,11 +38,20 @@
                 </select>
             </div>
             <div>
-                <label>Comment (optional)</label>
-                <textarea name="comments"></textarea>
+                <label>Comments:</label>
+                <textarea name="comment" id = "comment"></textarea>
             </div>
                 <input type="submit" value="Button">
         </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+
     </div>
 </body>
 
